@@ -30,6 +30,9 @@ There are 3 layers in the architecure of an Iceberg table, with each higher laye
 - It is a list of manifest files, and it contains the information of each manifest file that makes up the snapshot, such as location of file, what snapshot it was added to, and info about the partitions it belong to and the lower and upper bounds for the partition columns for the data files.
 - When a SELECT query is running, and has manifest list open for the snapshot, the query engine reads the location of manifest files and the opens the file. It can do some optimizations at this stage like row counts or filtering the data based on partition info.
 
+
 ### Manifest File
 - It tracks the data and  as well as additional details and stores the statistics of the file, which is the main difference between the open table format and Hive table format. 
 - Each manifest file keeps track of subset of data files for parallelism and reuse efficiency at scale. They contain lot of useful info to improve efficiency and performance like partition membership, lower and upper bounds of columns, and these stats are written for each manifest subset of data files, during the write operation, and hence they are accurate and up-to-date. 
+
+![1728541847737](https://github.com/user-attachments/assets/3c169e3a-133b-4484-bf43-a20df902d9f5)
